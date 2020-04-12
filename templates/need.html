@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>need</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/need.css">
+
+
+
+
+</head>
+
+
+
+<body>
+
+<header class="navbar">
+		<div class="nav-info">
+        <ul class="head">
+				<a class="active" href="/">首页</a>
+
+				<a href={% url  'All_thing' %}>交易区</a>
+
+			<a href="{% url 'up' %}">发布区</a>
+            <a href={% url 'qiugou' %}>求购区</a>
+			</ul>
+            {% if request.session.username %}
+			<a href="{% url 'login' %}" class="username">{{ request.session.username }}</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="username">登陆 / 注册</a>
+            {% endif %}
+			<a href="{% url 'thing' %} " class="thingshelf">||&nbsp;&nbsp;&nbsp我的发布</a>
+			<a href="{% url 'logout' %}" class="logout"> 退 出 </a>
+		</div> <!-- nav-info -->
+
+	</header>
+<div class="line">
+    <a  class="name">
+        商品名
+    </a >
+     <a class="price">
+        价格
+    </a>
+     <a class="time">
+        时间
+    </a>
+     <a class="link">
+        联系方式
+    </a>
+     <a class="detail">
+        要求
+    </a>
+</div>
+{% for one in need_list %}
+<div class="need">
+    <a  class="name1">
+    {{ one.name }}
+    </a >
+     <a class="price1">
+        {{ one.price }}
+    </a>
+     <a class="time1">
+       {{ one.data }}
+    </a>
+
+     <a class="link1">
+       {{ one.link }}
+    </a>
+
+    <a class="detail1">
+        {{ one.dTail }}
+    </a>
+    </div>
+ {% endfor %}
+
+</body>
+</html>

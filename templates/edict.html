@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head >
+	<title>编辑区</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/register_head.css">
+
+</head>
+<body>
+<header class="navbar">
+		<ul class="menu">
+			<li><a class="active" href="/">首页</a></li>
+			<li><a href="{% url 'All_thing' %}">交易区</a></li>
+		</ul>
+	</header>
+	<div id="login-container">
+		<h3>修改个人信息</h3>
+		<form action="/edict/" method="post">
+			<input type="text" name="c_email" class="userName" placeholder="绑定邮箱"><br/>
+			<input type="password" name="c_password" class="password" placeholder="修改并直接输入新密码"><br/>
+
+			<button class="loginBtn">
+				<a >完成</a>
+
+			</button><br/>
+            {{ error }}{{ secces }}
+
+		</form>
+	</div>
+</body>
+</html>

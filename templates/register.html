@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>注册区</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/register.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/register_head.css">
+</head>
+<body>
+<!-- 导航 -->
+	<header class="navbar">
+
+		<ul class="menu">
+			<li><a class="active" href="/">首页</a></li>
+			<li><a href="{% url 'All_thing' %}">交易区</a></li>
+		</ul>
+	</header>
+
+	<div id="register-container">
+		<h3>校园二手交易平台</h3>
+		<form action="/register/" method="post">
+			<input type="text" name="username" class="userName"    placeholder="账号"><br/>
+
+			<input type="password" name="password" class="userName" placeholder="密码"><br/>
+
+            <input type="text" name="email" class="userName" placeholder="邮箱，用于忘记密码登录，非必填项"><br/>
+			<button class="registerBtn">
+				<a >注册</a><br>
+			</button><br>
+            <a>{{ data }}{{ error }}{{ re1 }}</a>
+		</form>
+	</div>
+</body>
+</html>

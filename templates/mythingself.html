@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+	<title>我的物品</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/mythingshelf.css">
+</head>
+<body>
+
+	<nav class="navbar">
+		<div class="nav-menu">
+			<ul class="menu">
+				<li><a class="active" href="/">首页</a></li>
+
+				<li><a href={% url  'All_thing' %}>交易区</a></li>
+				
+				<li><a href="{% url 'up' %}">发布区</a></li>
+                 <li><a href={% url 'qiugou' %}>求购区</a></li>
+			</ul>
+		</div>
+		<div class="nav-info">
+			<a  class="username">{{ request.session.username }}</a>
+			<a href={% url  'thing' %} class="thingshelf">||&nbsp;&nbsp;&nbsp;我的物品</a>
+			<a href="{% url 'logout' %}" class="logout"> 退 出 </a>
+		</div>
+	</nav>
+	<div class="person-info">
+		<p>
+			<a  class="name"> {{ request.session.username }} </a>
+		</p>
+		<p class="set">
+			<a href={% url 'edict' %} class="edit">编辑个人主页</a>
+			<img class="set-icon" src="../static/img/setting.png">
+		</p>
+
+	</div><!-- person-info-end -->
+
+
+	<div class="card-btn">
+		<a  href={% url 'thing' %}  id="sell_btn" class="active">我的物品</a>
+        <a  href={% url 'myupneed' %}  id="need_btn" class="active">我的求购</a>
+
+	</div>
+
+	<div id="container">
+		<div id="sell-thing">
+			<ul class="thing-ul">
+                {% for one in a %}
+				<li class="thing-list">
+					<p class="thing-pic">
+						<img src="{{ one.image.url }}">
+					</p>
+					<h5 class="thing-name">{{ one.type }}</h5>
+					<form action="/mything/" method="post">
+						<input type="text" name="thing-id" class="thing-id" value="{{ one.id }}">
+                        <button>
+                        <a id="delete-thing" >删除</a>
+                    </button>
+					</form>
+
+					<div class="thing-detail">
+
+						<p>售&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：<span class="book-price">￥{{ one.price }}</span></p>
+						<p>时&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;间：<span class="book-condition">{{ one.data }}</span></p>
+						<p>发布人：<span class="book-desc">{{ one.Thing_own }}</span></p>
+					</div>
+				</li>
+                 {% endfor %}
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript" src="../static/js/jquery-3.2.js"></script>
+</body>
+</html>

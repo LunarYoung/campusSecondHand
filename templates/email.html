@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>邮箱区</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/email.css">
+</head>
+<body>
+	<div id="login-container">
+		<h3>二手交易平台</h3>
+		<form action="/email/" method="post">
+			<input type="text" name="email" class="userName" value="{{ secces.1 }}" placeholder="邮箱"><button class="loginBtn1">
+				<a >获取</a>
+
+			</button><br/>
+			<input type="password" name="re_email" class="password" placeholder="验证码"><br/>
+
+			<button class="loginBtn">
+				<a >登录</a>
+
+			</button><br/>
+             {{ secces.0 }}{{ not_man }}{{ not_thing }}{{ t_error }}{{ t_tip }}
+		</form>
+	</div>
+</body>
+</html>

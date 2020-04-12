@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+	<title >上传商品</title>
+
+
+	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/upload.css">
+</head>
+<body>
+
+	<nav class="navbar">
+		<div class="nav-menu">
+			<ul class="menu">
+				<li><a class="active" href="/">首页</a></li>
+				<li><a href="{% url 'All_thing' %}">交易区</a></li>
+				
+			<li><a href="">发布区</a></li>
+                <li><a href={% url 'qiugou' %}>求购区</a></li>
+			</ul>
+		</div><!-- nav-menu -->
+        <div class="nav-info">
+			<a  class="username">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{request.session.username}}</a>
+			<a href={% url 'thing' %} class="bookshelf">||&nbsp;&nbsp;&nbsp;我的二手</a>
+{#			<a href="{% url 'logout' %}" class="logout"> 退 出 </a>#}
+		</div> <!-- nav-info-end -->
+	</nav>
+	<div class="titleName">
+
+
+         <a id="upneed" href={% url 'upneed' %}>>>前往求购区</a>
+	
+	</div>
+	<div class="container">
+		<form class="upload-form" action="/sellUpload/" method="post"  enctype="multipart/form-data" name="addThing">
+            {% csrf_token %}
+			<p>
+				<span class="pic-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				上传图片：<input type="file" name="pic" ><br>
+              &nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;继续添加：<input type="file" name="pic1"/>&nbsp;请上传两张图片<br>
+
+			</p>
+			<p>
+				<span class="author-icon">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				联&nbsp;系&nbsp;&nbsp;方&nbsp;式：
+					<input type="text" name="link">
+			</p>
+			<p>
+				<span class="price-icon">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：<input type="text" name="price">
+			</p>
+			<p>
+				<span class="pic-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				物&nbsp;品&nbsp;&nbsp;类&nbsp;型：
+				<select name="type" class="time-icon">
+					<option value="电器">电器</option>
+					<option value="书本">书本</option>
+					<option value="生活用品">生活用品</option>
+					<option value="交通工具">交通工具</option>
+					<option value="其他">其他</option>
+				</select>
+			</p>
+			<p>
+				<span class="desc-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				货&nbsp;物&nbsp;&nbsp;描&nbsp;述：<textarea type="text" class="input1" name="detail"></textarea>
+                <br>
+                <p class="EROOR">
+                {{ eroor }}{{ secces }}
+            <p/>
+
+			</p>
+
+			<input  type="submit" class="submit-btn" value="上传" >
+
+
+		</form>
+
+
+	</div>
+
+
+	<script type="text/javascript" src="../static/js/jquery-3.2.js"></script>
+	<script type="text/javascript">
+//点击按钮可以取到select里面的值
+$("#btn1").click(function(){
+	console.log($("select").val())
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>登陆区</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/register.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/register_head.css">
+</head>
+<body>
+
+    <header class="navbar">
+		<ul class="menu">
+			<li><a class="active" href="/">首页</a></li>
+			<li><a href="{% url 'All_thing' %}">交易区</a></li>
+		</ul>
+	</header>
+	<div id="login-container">
+		<h3>校园二手交易平台</h3>
+		<form action="/login/" method="post">
+			<input type="text" name="username" class="userName" placeholder="学号"><br/>
+			<input type="password" name="password" class="password" placeholder="密码"><br/>
+
+            <a>{{ data.0}}{{ secces }}</a>
+			<a class="forgetPass" href="{% url 're_email' %}">忘记密码?</a><br/>
+            <input type="text" name="yzm" class="yzm" placeholder="验证码">
+            <a class="loginBtn1">
+               <img class="img" src="../media/yzm.png" />
+				{{ data.1 }}
+			</a><br/>
+			<button class="loginBtn">
+				<a>登录</a>
+			</button><br/>
+			<div class="register">还没注册？立即<a  class="register-btn" href={% url 'register' %}>注册</a></div>
+
+		</form>
+	</div>
+</body>
+</html>

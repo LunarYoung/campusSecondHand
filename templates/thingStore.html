@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>交易区</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/thing.css">
+</head>
+<body>
+	<header>
+		<nav class="navbar">
+			<div class="nav-info">
+				{% if request.session.username %}
+			<a href="{% url 'login' %}" class="username">{{ request.session.username }}</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="username">登陆 / 注册</a>
+            {% endif %}
+				<a href={% url 'thing' %} class="bookshelf">||&nbsp;&nbsp;&nbsp;我的发布</a>
+{#				<a href="{% url 'logout' %}" class="logout"> 退 出 </a>#}
+			</div>
+			<div class="nav-search">
+				<a ><img class="logo" src="../static/img/logo .png"></a>
+				<div class="search-form">
+                    <form action="/search/" method="post">
+					<input type="search" name="thing_name" class="searchIn" placeholder="搜索...">
+
+                        <a href="#" class="search-logo">| &nbsp;<img src="../static/img/search.png"></a>
+					<button class="searchBtn"><a href="">搜索</a></button>
+                        </form>
+				</div>
+			</div><!--  nav-search -->
+			<ul class="menu">
+				<li><a href="/">首页</a></li>
+				<li><a class="active" href="">交易区</a></li>
+			
+			<li><a href={% url 'up' %}>发布区</a></li>
+                	<li><a href={% url 'qiugou' %}>求购区</a></li>
+			</ul>
+		</nav>
+{#		<div class="thingstore-pic"></div>#}
+	</header>
+
+	     <div id="container">
+		  <div id="thing-menu">
+		 </div>
+		<div id="thing-container">
+
+<h3 class="thing-title">
+    	<a id="fenglei" >分类:</a>
+                    <a class="bSe"    href="{% url 'sort1' %}"> &nbsp; &nbsp; 电器</a>
+                    <a class ="bSe" href="{% url 'sort2' %}">  &nbsp;&nbsp; 书籍</a>
+                    <a class="bSe" href="{% url 'sort3' %}">   &nbsp;&nbsp;交通工具</a>
+                    <a class="bSe" href="{% url 'sort4' %}">  &nbsp;&nbsp; 生活用品</a>
+                    <a class="bSe" href="{% url 'sort5' %}">  &nbsp;&nbsp; 其他</a>
+			</h3>
+			<ul class="thing-lists">
+                {% for one in things %}
+				<li class="thing-list">
+					<a href=" {{ one.id }} "  class="thing-pic">
+						<img src ="{{ one.image.url }}">
+					</a>
+					<a  class="thing-info">
+						<h5 class="thing-name">{{ one.type }}</h5>
+						<span class="thing-detail">发布人：{{ one.Thing_own }}</span>
+					</a>
+					<span class="thing-price">￥:{{ one.price }}
+					</span>
+				</li>
+                {% endfor %}
+			</ul>
+		</div>
+		<span class="page-btn">
+                {% if things.has_previous %}
+                    <a class="page-pre" href="?page={{ things.previous_page_number }}">上一页</a>
+                {% endif %}
+                   <a class="page-pre">第{{things.number }}页</a>
+                {% if things.has_next %}
+                    <a class='page-pre' href="?page={{ things.next_page_number }}">下一页</a>
+                {% endif %}
+
+		</span>
+	</div><!-- container end-->
+
+	<script type="text/javascript" src="../static/js/jquery-3.2.js"></script>
+	<script type="text/javascript">
+		$(function(){
+				//菜单特效
+				var index = 0
+				$("#book-menu-toggle").on("click",function(){
+					if (index ===0 ) {
+						$("#book-menu").css("left","1px");
+						$(this).css("left","178px");
+						index =1;
+					}else{
+						$("#book-menu").css("left","-180px");
+						$(this).css("left","1px");
+						index=0;
+					}
+				});
+
+				//点击菜单，对应类别颜色加深
+				$(".book-class li").on("click",function(){
+				//加粗当前点击的li
+				$(this).css("font-weight","600").siblings("li").css("font-weight","500");
+			});
+		})
+	</script>
+	<footer>
+		<a>©2019&nbsp;&nbsp;&nbsp;意见反馈,联系微信&nbsp;:&nbsp;&nbsp;zqg2912344081&nbsp;&nbsp;&nbsp;&nbsp;粤ICP备19121961号</a>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/index.css">
+</head>
+<body  >
+
+	<!-- 导航 -->
+	<header class="navbar">
+		<div class="nav-info">
+            {% if request.session.username %}
+			<a href="{% url 'login' %}" class="username">{{ request.session.username }}</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="username">登陆 / 注册</a>
+            {% endif %}
+			<a href="{% url 'thing' %} " class="thingshelf">||&nbsp;&nbsp;&nbsp我的发布</a>
+{#			<a href="{% url 'logout' %}" class="logout"> 退 出 </a>#}
+		</div> <!-- nav-info -->
+
+		<ul class="menu">
+			<li><a class="active" href="/">首页</a></li>
+			<li><a href="{% url 'All_thing' %}">交易区</a></li>
+			
+			<li><a href={% url 'up' %}>发布区</a></li>
+            <li><a href={% url 'qiugou' %}>求购区</a></li>
+		</ul>
+	</header>
+
+	<div class="carousel">
+
+		<div class="slider">
+			<div class="slider-img">
+				<ul class="slider-img-ul">
+					<li><img src="../static/img/carousel/0.jpg"></li>
+					<li><img src="../static/img/carousel/id.jpg"></li>
+                    <li><img src="../static/img/carousel/cc.jpg"></li>
+					<li><img src="../static/img/carousel/aa.jpg"></li>
+					<li><img src="../static/img/carousel/bb.jpg"></li>
+
+					<li><img src="../static/img/carousel/0.jpg"></li>
+					<li><img src="../static/img/carousel/0.jpg"></li>
+				</ul>
+			</div>
+		</div><!-- 	slider -->
+	</div><!-- carousel -->
+
+	<div id="container">
+		<div class="thing-part" id="article">
+			<h3 class="thing-title"><a >| 最新发布</a></h3>
+			<a class="more" href="{% url 'All_thing' %}">>>更多</a>
+			<ul class="thing-lists">
+
+
+				<li class="thing-list">
+					<a href="{{ thing_list.0.id }}" class="thing-pic">
+
+						<img src ="{{ thing_list.0.image.url }}">
+
+					</a>
+					<a href="{{ thing_list.1.id }}" class="thing-info">
+						<h5 class="thing-name">{{ thing_list.0.type }}</h5>
+						<span class="thing-detail">{{ thing_list.0.link }}</span>
+					</a>
+					<span class="thing-price">￥:{{ thing_list.0.price }}
+
+					</span>
+				</li>
+                <li class="thing-list">
+					<a href="{{ thing_list.1.id }}" class="thing-pic">
+
+						<img src ="{{ thing_list.1.image.url }}">
+
+					</a>
+					<a href="{{ thing_list.1.id }}" class="thing-info">
+						<h5 class="thing-name">{{ thing_list.1.type }}</h5>
+						<span class="thing-detail">{{ thing_list.1.link }}</span>
+					</a>
+					<span class="thing-price">￥:{{ thing_list.1.price }}
+
+					</span>
+				</li>
+                <li class="thing-list">
+					<a href="{{ thing_list.2.id }}" class="thing-pic">
+
+						<img src ="{{ thing_list.2.image.url }}">
+
+					</a>
+					<a href="{{ thing_list.2.id }}" class="thing-info">
+						<h5 class="thing-name">{{ thing_list.2.type }}</h5>
+						<span class="thing-detail">{{ thing_list.2.link }}</span>
+					</a>
+					<span class="thing-price">￥:{{ thing_list.2.price }}
+
+					</span>
+				</li>
+                <li class="thing-list">
+					<a href="{{ thing_list.3.id }}" class="thing-pic">
+
+						<img src ="{{ thing_list.3.image.url }}">
+
+					</a>
+					<a href="{{ thing_list.3.id }}" class="thing-info">
+						<h5 class="thing-name">{{ thing_list.3.type }}</h5>
+						<span class="thing-detail">{{ thing_list.3.link }}</span>
+					</a>
+					<span class="thing-price">￥:{{ thing_list.3.price }}
+
+					</span>
+				</li>
+                <li class="thing-list">
+					<a href="{{ thing_list.4.id }}" class="thing-pic">
+
+						<img src ="{{ thing_list.4.image.url }}">
+
+					</a>
+					<a href="{{ thing_list.4.id }}" class="thing-info">
+						<h5 class="thing-name">{{ thing_list.4.type }}</h5>
+						<span class="thing-detail">{{ thing_list.4.link }}</span>
+					</a>
+					<span class="thing-price">￥:{{ thing_list.4.price }}
+
+					</span>
+				</li>
+
+			</ul>
+
+		</div>
+		
+
+	</div>
+
+	<script type="text/javascript" src="../static/js/jquery-3.2.js"></script>
+	<script type="text/javascript" src="../static/js/xSlider.js"></script>
+	<script type="text/javascript">
+		$(function(){
+
+			$(".thing-class li a").on("click",function(){
+				var classId = $(this).prop("title");
+				console.log(classId);
+				var classTop =  $("#container").find(("#"+classId)).offset().top;
+				$("html,body").animate({scrollTop:classTop+ "px"}, 500);
+			});
+		})
+	</script>
+	<footer>
+		<a>©2019&nbsp;&nbsp;&nbsp;意见反馈,联系微信&nbsp;:&nbsp;&nbsp;zqg2912344081&nbsp;&nbsp;&nbsp;&nbsp;粤ICP备19121961号</a>
+	</footer>
+</body>
+</html>

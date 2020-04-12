@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>详情区</title>
+	<link rel="stylesheet" type="text/css" href="../../static/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../../static/css/thingDetail.css">
+</head>
+<body>
+	<nav class="navbar">
+		<div class="nav-menu">
+			<ul class="menu">
+				<li><a class="active" href="/">首页</a></li>
+				<li><a href="{% url 'All_thing' %}">交易区</a></li>
+			
+			<li><a href="{% url 'up' %}">发布区</a></li>
+                <li><a href="{% url 'up' %}">发布区</a></li>
+			</ul>
+
+		</div><!-- nav-menu -->
+        	<div class="nav-info">
+			{% if request.session.username %}
+			<a href="{% url 'login' %}" class="username">{{ request.session.username }}</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="username">登陆 / 注册</a>
+            {% endif %}
+			<a href={% url 'thing' %} class="bookshelf">||&nbsp;&nbsp;&nbsp;我的二手</a>
+			<a href="{% url 'logout' %}" class="logout"> 退 出 </a>
+		</div> <!-- nav-info-end -->
+
+{#		<form class="nav-search">#}
+{#			<input type="search" class="searchIn" placeholder="搜图书...">#}
+{#			<button class="search-logo"><img src="../static/img/search2.png"></button>#}
+{#		</form>#}
+
+{#		<div class="nav-info">#}
+{#			<a href="#" class="username">chieminchan</a>#}
+{#			<a href="myBookself.html" class="bookshelf">||&nbsp;&nbsp;&nbsp;我的书架</a>#}
+{#			<a href="login.html" class="logout">[ 退 出 ]</a>#}
+{#		</div> <!-- nav-info-end -->#}
+	</nav>
+
+	<div class="container">
+
+
+		<div id="thing-info">
+			<span class="thing-name">类型:&nbsp;{{ thing_All.type }}</span>
+
+			<span class="thing-price">
+
+				<p>定价&nbsp;: <a class="condition">￥{{ thing_All.price }}</a></p>
+                <p>联系方式&nbsp;: <a class="upload-time">{{ thing_All.link }}</a></p>
+                <p>发布时间&nbsp;:<a class="upload-time">{{ thing_All.data }}</a></p>
+                <p>发布人&nbsp;:<a class="upload-time">{{ thing_All.Thing_own }}</a></p>
+
+			</span>
+
+
+		</div>
+        <div id="thing-pic">
+			<div class="thing-big">
+				<img src="{{ thing_All.image.url }}">
+			</div>
+
+			<span class="tip"></span>
+		</div> <!-- book-pic-end -->
+         <div id="thing-pic">
+
+           <div class="thing-big">
+				<img src="{{ thing_All.image1.url }}">
+			</div>
+			<span class="tip"></span>
+		</div> <!-- book-pic-end -->
+            <div id="thing-content">
+                <div class="thing-detail">
+                物品描述：
+                    <a class="thing-detail"> {{ thing_All.dtail }}</a>
+                    </div>
+            </div>
+	</div>
+
+	<footer>
+		<a>©2019&nbsp;&nbsp;&nbsp;意见反馈,联系微信&nbsp;:&nbsp;&nbsp;zqg2912344081&nbsp;&nbsp;&nbsp;&nbsp;粤ICP备19121961号</a>
+	</footer>
+</body>
+</html>
