@@ -1,8 +1,8 @@
 # Django-python
 
-Django二手网站信息发布校网站。
+校园二手网站信息发布网站。
 
-mysql，Nginx。
+Django，mysql，Nginx。
 
 大二上学期。
 
