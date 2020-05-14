@@ -13,6 +13,7 @@ Django，mysql，Nginx。
 ![image](https://github.com/yuelishaonian/Django/blob/master/pre_veiw/1.png)
 ![image](https://github.com/yuelishaonian/Django/blob/master/pre_veiw/2.png)
 ![image](https://github.com/yuelishaonian/Django/blob/master/pre_veiw/3.png)
+![image](https://github.com/yuelishaonian/Django/blob/master/pre_veiw/5.png)
 ![image](https://github.com/yuelishaonian/Django/blob/master/pre_veiw/4.png)
 
 
