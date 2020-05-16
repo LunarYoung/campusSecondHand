@@ -11,7 +11,7 @@ Django，mysql，Nginx。
 演示地址：https://www.bilibili.com/video/BV1Te411x72W
 
 ![image](https://github.com/LunarYoung/Django/tree/master/pre_veiw/1.png)
-
+![image](https://github.com/LunarYoung/Django/tree/master/pre_veiw/52.png)
 ![image](https://github.com/LunarYoung/Django/blob/master/pre_veiw/3.png)
 ![image](https://github.com/LunarYoung/Django/blob/master/pre_veiw/5.png)
 ![image](https://github.com/LunarYoung/Django/blob/master/pre_veiw/4.png)
