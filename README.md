@@ -4,11 +4,6 @@
 
 Django，mysql，Nginx。
 
-大二上学期。
-
-联系方式WeChat：zqg2912344081
-
-演示地址：https://www.bilibili.com/video/BV1Te411x72W
 
 ![image](https://github.com/LunarYoung/Django/tree/master/pre_veiw/1.png)
 ![image](https://github.com/LunarYoung/Django/tree/master/pre_veiw/52.png)
